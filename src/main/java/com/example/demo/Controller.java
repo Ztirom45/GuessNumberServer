@@ -19,6 +19,9 @@ import com.example.demo.database.LoggingEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime; 
+
+
 @RestController
 public class Controller{
 
@@ -26,14 +29,22 @@ public class Controller{
 	@Autowired private LoggingService loggingService;
 
 	//private final AtomicLong counter = new AtomicLong();
-
-	@GetMapping("/greeting")
-	public ReturnType greeting(@RequestParam(value = "number", defaultValue = "0") String name) {
+	public void log(String content){
 		loggingService.savelog(
 				LoggingEntity.builder()
-				.loggingContent(name)
+				.timestamp(LocalTime.now())
+				.loggingContent(content)
 				.build()
 		);
-		return new ReturnType(numberGenerator.guess(name));
+	}
+
+	public ReturnType reply(String reply){
+		log("reply: "+reply);
+		return new ReturnType(reply);
+	}
+	@GetMapping("/greeting")
+	public ReturnType greeting(@RequestParam(value = "number", defaultValue = "0") String name) {
+		log("GET: "+name);
+		return reply(numberGenerator.guess(name));
 	}
 }

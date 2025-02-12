@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalTime; // import the LocalDate class
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -21,5 +23,6 @@ public class LoggingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long loggingId;
+    private LocalTime timestamp;
     private String loggingContent;
 }

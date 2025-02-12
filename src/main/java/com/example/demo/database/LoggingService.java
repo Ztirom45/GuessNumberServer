@@ -36,10 +36,11 @@ public class LoggingService{
                   .get();
 
         if (Objects.nonNull(log.getLoggingContent())
-            && !"".equalsIgnoreCase(
-                log.getLoggingContent())) {
-            logDB.setLoggingContent(
-                log.getLoggingContent());
+            && !"".equalsIgnoreCase(log.getLoggingContent())) {
+            logDB.setLoggingContent(log.getLoggingContent());
+        }
+        if (Objects.nonNull(log.getTimestamp())){
+            logDB.setTimestamp(log.getTimestamp());
         }
 
 
