@@ -26,7 +26,7 @@ jobs:
       run: | 
         docker build . --tag ghcr.io/ztirom45/guess_number_server:latest
     - name: push to dhcr
-      run |
+      run: |
         echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Ztirom45 --password-stdin
         docker push ghcr.io/ztirom45/guess_number_server:latest
 
