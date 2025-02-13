@@ -22,7 +22,7 @@ jobs:
       #    github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the Docker image
       run: |
-        echo secrets.GITHUB_TOKEN
+        echo ${{ secrets.GITHUB_TOKEN }}
         ./gradlew bootJar
         docker build . --tag ghcr.io/ztirom45/guess_number_server:latest
         docker push ghcr.io/ztirom45/guess_number_server:latest
