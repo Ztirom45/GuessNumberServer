@@ -1,0 +1,36 @@
+<!DOCTYPE html>  
+<html>
+	<head>
+		<title>GAME</title>
+	</head>
+	<body>
+		<script>
+			function send(){
+				var output = document.getElementById('output');
+				var number = parseFloat(document.getElementById('textbox').value);
+				if(isNaN(number)){
+					output.textContent = "Syntax error: please enter a float"	
+					return;
+				}
+				var answer = "not availble";
+				
+				answer = fetch("http://localhost:8080/greeting?number=-14875000")
+					.then(function(response) {
+					  return response.json();
+					}).then(function(data) {
+					  console.log(data);
+					}).catch(function(err) {
+					  console.log('Fetch Error :-S', err);
+					});
+
+
+				output.textContent = String(number)+ " -> "+answer;
+			}
+		</script>
+		<h1> guess a Number:</h>	
+		</p>
+		<input id="textbox"></input>
+		<button onclick="send();">send</button>
+		<p id="output">enter a number</p>
+	</body>
+</html> 
