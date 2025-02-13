@@ -9,7 +9,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
+    
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
@@ -22,8 +25,8 @@ jobs:
       #    github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the Docker image
       run: |
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Ztirom45 --password-stdin
         ./gradlew bootJar
         docker build . --tag ghcr.io/ztirom45/guess_number_server:latest
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Ztirom45 --password-stdin
         docker push ghcr.io/ztirom45/guess_number_server:latest
 
