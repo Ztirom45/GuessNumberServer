@@ -18,7 +18,7 @@ jobs:
         java-version: '17'
     - uses: macbre/push-to-ghcr@master
         with:
-          image_name: ghcr.io/ztirom45/guess_number_server:latest
+          image_name: 'ghcr.io/ztirom45/guess_number_server:latest'
           github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the Docker image
       run: |
