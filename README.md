@@ -10,3 +10,9 @@ A spring boot server for the numberguessing game
 ### h2 database for logging
 - http://localhost:8080/h2-console/
 - JDBC Url: jdbc:h2:mem:dcbapp
+
+### run with docker
+```sh
+docker pull ghcr.io/ztirom45/guess_number_server
+docker run -p8080:8080 ghcr.io/ztirom45/guess_number_server
+```

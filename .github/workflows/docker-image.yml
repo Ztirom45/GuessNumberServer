@@ -19,14 +19,14 @@ jobs:
       with:
         distribution: 'zulu' # See 'Supported distributions' for available options
         java-version: '17'
-      #- uses: macbre/push-to-ghcr@master
-      #  with:
-      #    image_name: 'ghcr.io/ztirom45/guess_number_server:latest'
-      #    github_token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build the Docker image
-      run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Ztirom45 --password-stdin
+    - name: Build jar with gradle
+      run: | 
         ./gradlew bootJar
+    - name: Build the Docker image
+      run: | 
         docker build . --tag ghcr.io/ztirom45/guess_number_server:latest
+    - name: push to dhcr
+      run |
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Ztirom45 --password-stdin
         docker push ghcr.io/ztirom45/guess_number_server:latest
 
