@@ -1,3 +1,6 @@
+# GuessNumberServer
+# A spring boot server for the numberguessing gabe
+
 # Use:
 ## json 
 - `float GUESS = (float)(ThreadLocalRandom.current().nextInt(-0x7fffffff,0x7fffffff))/10000.f;`
