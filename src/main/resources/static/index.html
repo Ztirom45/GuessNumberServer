@@ -1,7 +1,15 @@
 <!DOCTYPE html>  
 <html>
+	
 	<head>
-		<title>GAME</title>
+		<title>Guess a number</title>
+		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+		<style type="text/tailwindcss"> 
+			@theme {
+				--color-clifford: #da373d;
+			}
+		</style>
 	</head>
 	<body>
 		<script>
@@ -14,23 +22,25 @@
 				}
 				var answer = "not availble";
 				
-				answer = fetch("http://localhost:8080/greeting?number=-14875000")
+				fetch("http://localhost:8080/greeting?number="+number)
 					.then(function(response) {
 					  return response.json();
 					}).then(function(data) {
 					  console.log(data);
+					  output.textContent = number + " -> "+data["value"];
 					}).catch(function(err) {
+					  output.textContent = "backend error";
 					  console.log('Fetch Error :-S', err);
 					});
 
 
-				output.textContent = String(number)+ " -> "+answer;
 			}
 		</script>
 		<h1> guess a Number:</h>	
 		</p>
 		<input id="textbox"></input>
 		<button onclick="send();">send</button>
+		<button class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">Submit</button>
 		<p id="output">enter a number</p>
 	</body>
 </html> 
