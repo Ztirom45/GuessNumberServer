@@ -3,7 +3,6 @@
 	
 	<head>
 		<title>Guess a number</title>
-		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 		<style type="text/tailwindcss"> 
 			@theme {
@@ -15,6 +14,7 @@
 		<script>
 			function send(){
 				var output = document.getElementById('output');
+				var history = document.getElementById('history');
 				var number = parseFloat(document.getElementById('textbox').value);
 				if(isNaN(number)){
 					output.textContent = "Syntax error: please enter a float"	
@@ -27,6 +27,8 @@
 					  return response.json();
 					}).then(function(data) {
 					  console.log(data);
+					  document.getElementById('history').innerHTML 
+							= '<p>'+output.textContent+'</p>' + document.getElementById('history').innerHTML;
 					  output.textContent = number + " -> "+data["value"];
 					}).catch(function(err) {
 					  output.textContent = "backend error";
@@ -36,11 +38,26 @@
 
 			}
 		</script>
-		<h1> guess a Number:</h>	
-		</p>
-		<input id="textbox"></input>
-		<button onclick="send();">send</button>
-		<button class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">Submit</button>
-		<p id="output">enter a number</p>
+		<div class="text-center">
+			<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+				>Guess a number Game</h1>
+			</p>
+			<div class="mb-4 px-100 pt-6 pb-8">
+				<input 
+					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+					id="textbox" 
+					type="text" 
+					placeholder="Guess the number">
+
+			<button class="bg-blue-500 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+				type="button"
+				onclick="send();"
+				class=""
+			>send</button>
+			</div>
+
+			<p id="output"></p>
+			<div id="history" class="text-slate-400"></div>
+		<div>	
 	</body>
 </html> 
