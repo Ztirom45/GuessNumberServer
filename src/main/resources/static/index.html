@@ -3,16 +3,41 @@
 	
 	<head>
 		<title>Guess a number</title>
-		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-		<style type="text/tailwindcss"> 
-			@theme {
-				--color-clifford: #da373d;
-			}
+		
+
+		<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+		<script src="https://cdn.tailwindcss.com"></script>
 		</style>
 	</head>
 	<body>
 		<script>
+			var tries = 0;
+			var d_init = new Date();
+			var visited = d_init.getTime();
+			var is_hacked = false;
+			function update_tries(){
+				document.getElementById('tries').textContent = tries;
+			}
+
+			setInterval(myTimer, 1000);
+
+			function myTimer() {
+			  const d = new Date();
+			  document.getElementById("timer").innerHTML = String(((d.getTime()-visited)/1000)|0)+"s";
+			}
+			function hacked(){
+				d = new Date();
+				document.getElementById('victory').textContent = ' with '+tries+' tries in '+((d.getTime()-visited)/1000)+' secounds'
+				document.getElementById('history').innerHTML =
+					'<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white  animate-ping"> Hacked</h1>';
+				is_hacked = true;
+
+			}
 			function send(){
+				if(is_hacked){
+					return;
+				}
+
 				var output = document.getElementById('output');
 				var history = document.getElementById('history');
 				var number = parseFloat(document.getElementById('textbox').value);
@@ -21,15 +46,23 @@
 					return;
 				}
 				var answer = "not availble";
-				
+
 				fetch("http://localhost:8080/greeting?number="+number)
 					.then(function(response) {
 					  return response.json();
 					}).then(function(data) {
-					  console.log(data);
-					  document.getElementById('history').innerHTML 
-							= '<p>'+output.textContent+'</p>' + document.getElementById('history').innerHTML;
-					  output.textContent = number + " -> "+data["value"];
+					console.log(data);
+					value = data["value"];
+					
+					tries += 1;
+					update_tries();
+					if(value == "Hacked"){
+						hacked();
+						return;
+					}
+					document.getElementById('history').innerHTML 
+						= '<p>'+output.textContent+'</p>' + document.getElementById('history').innerHTML;
+					  output.textContent = number + " -> "+value;
 					}).catch(function(err) {
 					  output.textContent = "backend error";
 					  console.log('Fetch Error :-S', err);
@@ -42,22 +75,24 @@
 			<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
 				>Guess a number Game</h1>
 			</p>
-			<div class="mb-4 px-100 pt-6 pb-8">
-				<input 
-					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+			<div class ="w-6/12 mx-auto text-center ">
+			<table class ="table text-center">
+			<th><p id="tries">0</p></th>
+			<th><p id="timer">0s</p></th>	
+			</table>
+			</div>
+			
+			<input 
+					class="input input-bordered w-full max-w-xs" 
 					id="textbox" 
 					type="text" 
 					placeholder="Guess the number">
 
-			<button class="bg-blue-500 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-				type="button"
-				onclick="send();"
-				class=""
-			>send</button>
-			</div>
+			<button class="btn" onclick="send();">send</button>
 
 			<p id="output"></p>
+			<p id = victory></p>
 			<div id="history" class="text-slate-400"></div>
-		<div>	
+		<div>
 	</body>
 </html> 
