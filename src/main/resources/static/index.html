@@ -7,70 +7,9 @@
 
 		<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
 		<script src="https://cdn.tailwindcss.com"></script>
-		</style>
+		<script src="script.js"></script> 
 	</head>
 	<body>
-		<script>
-			var tries = 0;
-			var d_init = new Date();
-			var visited = d_init.getTime();
-			var is_hacked = false;
-			function update_tries(){
-				document.getElementById('tries').textContent = tries;
-			}
-
-			setInterval(myTimer, 1000);
-
-			function myTimer() {
-			  const d = new Date();
-			  document.getElementById("timer").innerHTML = String(((d.getTime()-visited)/1000)|0)+"s";
-			}
-			function hacked(){
-				d = new Date();
-				document.getElementById('victory').textContent = ' with '+tries+' tries in '+((d.getTime()-visited)/1000)+' secounds'
-				document.getElementById('history').innerHTML =
-					'<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white  animate-ping"> Hacked</h1>';
-				is_hacked = true;
-
-			}
-			function send(){
-				if(is_hacked){
-					return;
-				}
-
-				var output = document.getElementById('output');
-				var history = document.getElementById('history');
-				var number = parseFloat(document.getElementById('textbox').value);
-				if(isNaN(number)){
-					output.textContent = "Syntax error: please enter a float"	
-					return;
-				}
-				var answer = "not availble";
-
-				fetch("http://localhost:8080/greeting?number="+number)
-					.then(function(response) {
-					  return response.json();
-					}).then(function(data) {
-					console.log(data);
-					value = data["value"];
-					
-					tries += 1;
-					update_tries();
-					if(value == "Hacked"){
-						hacked();
-						return;
-					}
-					document.getElementById('history').innerHTML 
-						= '<p>'+output.textContent+'</p>' + document.getElementById('history').innerHTML;
-					  output.textContent = number + " -> "+value;
-					}).catch(function(err) {
-					  output.textContent = "backend error";
-					  console.log('Fetch Error :-S', err);
-					});
-
-
-			}
-		</script>
 		<div class="text-center">
 			<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
 				>Guess a number Game</h1>
@@ -93,6 +32,10 @@
 			<p id="output"></p>
 			<p id = victory></p>
 			<div id="history" class="text-slate-400"></div>
+			<div class ="w-6/12 mx-auto text-center ">
+				<table class ="table text-center" id=scoreboard>
+			</table>
+
 		<div>
 	</body>
 </html> 
