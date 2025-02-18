@@ -62,10 +62,17 @@ function get_scores(){
 		scoreboard.innerHTML = "<tr><th><p> Rank:</th></p><th><p>tries</th></p><th><p>time</th></p></tr>";
 
 		data_array.forEach(function(e,i){
-			scoreboard.innerHTML += "<tr><th><p> "+String(i)+
-				"</th></p><th><p>"+String(e[0])
-				+"</th></p><th><p>"+String(e[1])+"</th></p></tr>";
+			var thm = 'class="text-blue-600/100"' 
+			if(e[0]==tries && e[1]==time){
+				 thm = 'class="text-blue-600/100"'
+			}else{
+				 thm = 'class="text-slate-400"'
+			}
+			scoreboard.innerHTML += "<tr><th><p "+thm+"> "+String(i+1)+
+				"</th></p> <th><p "+thm+">"+String(e[0])
+				+"</th></p> <th><p "+thm+">"+String(e[1])+"sec</p></th></tr>";
 		});
+		console.log(scoreboard.innerHTML);
 		}).catch(function(err) {
 		  output.textContent = "backend error";
 		  console.log('Fetch Error :-S', err);
