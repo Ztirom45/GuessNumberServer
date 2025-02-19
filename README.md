@@ -10,6 +10,9 @@ A spring boot server for the numberguessing game
 - http://localhost:8080/greeting?number= `GUESS`
 - example: http://localhost:8080/greeting?number=-11.12
 
+### move to Dockercompose and postgres
+- run `docker compose up`
+
 ### h2 database for logging
 - http://localhost:8080/h2-console/
 - JDBC Url: jdbc:h2:mem:dcbapp
