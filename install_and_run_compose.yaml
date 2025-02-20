@@ -4,6 +4,11 @@ services:
     ports:
       - "8080:8080"
   postgres:
-    image: ghcr.io/ztirom45/guess_number_db:latest
+    image: postgres:latest
+    container_name: my_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: psw
+      POSTGRES_DB: db
     ports:
       - "5432:5432"
