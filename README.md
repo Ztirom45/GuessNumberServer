@@ -2,6 +2,14 @@
 A spring boot server for the numberguessing game
 
 ## Use:
+### install with docker compose
+- [download install_and_run_compose.yaml](https://github.com/Ztirom45/GuessNumberServer/blob/release/install_and_run_compose.yaml)
+- run `sudo docker compose -f install_and_run_compose.yaml up`
+
+### frontend:
+- http://localhost:8080
+
+
 ### json API 
 - range: 
     ```java
@@ -15,9 +23,3 @@ A spring boot server for the numberguessing game
 - add a score: http://localhost:8080/score?tries=`tries`&time=`time`
 - read scores: http://localhost:8080/get_scores
 
-### frontend:
-- http://localhost:8080
-
-### install with docker compose
-- [download install_and_run_compose.yaml](https://github.com/Ztirom45/GuessNumberServer/blob/release/install_and_run_compose.yaml)
-- run `sudo docker compose -f install_and_run_compose.yaml up`
