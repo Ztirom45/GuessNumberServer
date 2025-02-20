@@ -1,0 +1,9 @@
+services:
+  web:
+    image: ghcr.io/ztirom45/guess_number_server:latest
+    ports:
+      - "8080:8080"
+  postgres:
+    image: ghcr.io/ztirom45/guess_number_db:latest
+    ports:
+      - "5432:5432"
