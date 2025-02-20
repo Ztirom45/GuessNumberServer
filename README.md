@@ -21,6 +21,6 @@ A spring boot server for the numberguessing game
 ### highscore API 🖧:
 - `int time`
 - `float tries`
-- add a score: http://localhost:8080/score?tries=`tries`&time=`time`
+- add a score: http://localhost:8080/score?tries= `tries` &time= `time`
 - read scores: http://localhost:8080/get_scores
 
