@@ -11,7 +11,7 @@ A spring boot server for the numberguessing game
 ### frontend 🖥️:
 - http://localhost:8080
 
-### json API 🖧: 
+### guess API 🖧: 
 - range: 
     ```java
     float GUESS = (float)(ThreadLocalRandom.current().nextInt(-0x7fffffff,0x7fffffff))/10000.f;
