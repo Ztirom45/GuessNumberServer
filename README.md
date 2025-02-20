@@ -9,20 +9,12 @@ A spring boot server for the numberguessing game
     ```
 - http://localhost:8080/greeting?number= `GUESS`
 - example: http://localhost:8080/greeting?number=-11.12
+### highscore api:
+- TODO: documenteation
 
-### move to Dockercompose and postgres
-- run `docker compose up`
+### frontend:
+- http://localhost:8080
 
-### h2 database for logging
-- http://localhost:8080/h2-console/
-- JDBC Url: jdbc:h2:mem:dcbapp
-- read log:
-```sql
-SELECT * FROM LOGGING_ENTITY 
-```
-
-### install and run with docker
-```sh
-docker pull ghcr.io/ztirom45/guess_number_server
-docker run -p8080:8080 ghcr.io/ztirom45/guess_number_server
-```
+### install with docker compose
+- [download install_and_run_compose.yaml](https://github.com/Ztirom45/GuessNumberServer/blob/main/install_and_run_compose.yaml)
+- run `sudo docker compose -f install_and_run_compose.yaml up`
