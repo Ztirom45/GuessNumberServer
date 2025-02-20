@@ -19,8 +19,8 @@ A spring boot server for the numberguessing game
 - http://localhost:8080/greeting?number= `GUESS`
 - example: http://localhost:8080/greeting?number=-11.12
 ### highscore API 🖧:
-- `int time`
-- `float tries`
+- `float time`
+- `int tries`
 - add a score: [http://localhost:8080/score?tries=](_)`tries`[&time=](_)`time`
 - read scores: http://localhost:8080/get_scores
 
