@@ -25,7 +25,8 @@ jobs:
     
     - name: Build Compose Images
       run: docker compose -f compose.yaml build
-  
+    - name: login into ghcr.io
+      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Ztirom45 --password-stdin
     - name: Push image to Container Registry
       run: docker compose -f compose.yaml push
 
