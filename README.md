@@ -1,6 +1,12 @@
 # GuessNumberServer 🐋☕🍃🐘
 A spring boot server for the numberguessing game
 
+<p float="left">
+  <img src="https://github.com/Ztirom45/SmartWatch/blob/main/rsc/1.png" width="50%" />
+  <img src="https://github.com/Ztirom45/SmartWatch/blob/main/rsc/2.png" width="50%" />
+</p>
+
+
 ## Use:
 ### install with docker compose 🐋⇩
 #### tested on (Fedora 41 x86)
