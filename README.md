@@ -49,3 +49,5 @@ docker compose up
 #### frontend 🖥️:
 - html css javascript
 - ≈tailwind + dazyui
+#### deployment
+- 🐋docker-compose
