@@ -4,7 +4,9 @@ A spring boot server for the numberguessing game
 ## Use:
 ### install with docker compose 🐋⇩
 #### tested on (Fedora 41 x86)
-- [download install_and_run_compose.yaml](https://github.com/Ztirom45/GuessNumberServer/blob/release/install_and_run_compose.yaml)
+- [download install_and_run_compose.yaml](https://raw.githubusercontent.com/Ztirom45/GuessNumberServer/refs/heads/release/compose.yaml)
+- or use `wget https://raw.githubusercontent.com/Ztirom45/GuessNumberServer/refs/heads/release/compose.yaml`
+- or use `curl -O https://raw.githubusercontent.com/Ztirom45/GuessNumberServer/refs/heads/release/compose.yaml`
 - run `docker compose -f install_and_run_compose.yaml up`
 - you may need to use `sudo`
 - you may need to start docker `sudo systemctl start docker`
