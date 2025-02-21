@@ -2,8 +2,8 @@
 A spring boot server for the numberguessing game
 
 <p float="left">
-  <img src="https://github.com/Ztirom45/GuessNumberServer/blob/main/rsc/1.png" width="49%" />
   <img src="https://github.com/Ztirom45/GuessNumberServer/blob/main/rsc/2.png" width="49%" />
+  <img src="https://github.com/Ztirom45/GuessNumberServer/blob/main/rsc/1.png" width="49%" />
 </p>
 
 
