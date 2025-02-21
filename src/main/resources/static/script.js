@@ -3,7 +3,7 @@ var d_init = new Date();
 var visited = d_init.getTime();
 var is_hacked = false;
 var time = 0;
-
+var host = window.location.host; 
 console.log("test2");
 
 function update_tries(){
@@ -32,12 +32,12 @@ function hacked(){
 }
 var data_copy = [];
 function send_score(){
-	var req = "http://localhost:8080/score?tries="+String(tries)+"&time="+String(time);
+	var req = host+"/score?tries="+String(tries)+"&time="+String(time);
 	console.log(req);
 	fetch(req);
 }
 function get_scores(){
-	fetch("http://localhost:8080/get_scores")
+	fetch( host+"/get_scores")
 		.then(function(response) {
 		  return response.json();
 		}).then(function(data) {
@@ -94,7 +94,7 @@ function send(){
 	}
 	var answer = "not availble";
 
-	fetch("http://localhost:8080/greeting?number="+number)
+	fetch(host+"/greeting?number="+number)
 		.then(function(response) {
 		  return response.json();
 		}).then(function(data) {
