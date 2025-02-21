@@ -48,12 +48,12 @@ docker compose up
 - add a score: [http://localhost:8080/score?tries=](_)`tries`[&time=](_)`time`
 - read scores: http://localhost:8080/get_scores
 
-### used technoligies
-#### backend 🖧:
+## used technoligies
+### backend 🖧:
 - 🍃spring boot
 - 🐘postgres / h2 in the past
-#### frontend 🖥️:
+### frontend 🖥️:
 - html css javascript
 - ≈tailwind + dazyui
-#### deployment
+### deployment
 - 🐋docker-compose
