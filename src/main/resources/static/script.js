@@ -3,7 +3,7 @@ var d_init = new Date();
 var visited = d_init.getTime();
 var is_hacked = false;
 var time = 0;
-var host = window.location.host; 
+var host = "http://"+window.location.host; 
 console.log("test2");
 
 function update_tries(){
