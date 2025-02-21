@@ -1,4 +1,4 @@
-# GuessNumberServer
+# GuessNumberServer 🐋☕🍃🐘
 A spring boot server for the numberguessing game
 
 ## Use:
@@ -6,7 +6,7 @@ A spring boot server for the numberguessing game
 #### tested on (Fedora 41 x86)
 - [download install_and_run_compose.yaml](https://github.com/Ztirom45/GuessNumberServer/blob/release/install_and_run_compose.yaml)
 - run `docker compose -f install_and_run_compose.yaml up`
-- you may need to use sudo
+- you may need to use `sudo`
 - you may need to start docker `sudo systemctl start docker`
 - if it throws errors after first boot up: try to rerun it
 
@@ -19,7 +19,7 @@ cd GuessNumberServer
 docker compose build
 docker compose up
 ```
-- you may need to use sudo
+- you may need to use `sudo`
 - you may need to start docker `sudo systemctl start docker`
 
 
