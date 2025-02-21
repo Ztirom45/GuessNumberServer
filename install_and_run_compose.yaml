@@ -3,12 +3,25 @@ services:
     image: ghcr.io/ztirom45/guess_number_server:latest
     ports:
       - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy  
   postgres:
-    image: postgres:latest
-    container_name: my_postgres
+    image: postgres:9.4
+    container_name: my_postgres2
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: psw
       POSTGRES_DB: db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     ports:
       - "5432:5432"
+
+
+networks:
+  mynet:
+    driver: bridge
