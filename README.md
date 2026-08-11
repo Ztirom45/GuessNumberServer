@@ -30,6 +30,19 @@ docker compose up
 - you may need to use `sudo`
 - you may need to start docker `sudo systemctl start docker`
 
+### run jar directly on your system (not recommended)
+```
+git clone https://github.com/Ztirom45/GuessNumberServer
+cd GuessNumberServer
+./gradlew bootJar
+```
+- replace in application properties `spring.datasource.url=jdbc:postgresql://localhost:5432/db`
+```
+docker compose up postgres
+```
+- you may need to use `sudo`
+- you may need to start docker `sudo systemctl start docker`
+
 
 
 ### frontend 🖥️:
@@ -48,12 +61,12 @@ docker compose up
 - add a score: [http://localhost:8080/score?tries=](_)`tries`[&time=](_)`time`
 - read scores: http://localhost:8080/get_scores
 
-## used technoligies
+## used technologies
 ### backend 🖧:
 - 🍃spring boot
 - 🐘postgres / h2 in the past
 ### frontend 🖥️:
 - html css javascript
-- ≈tailwind + dazyui
+- ≈tailwind + daisyUI
 ### deployment
 - 🐋docker-compose
